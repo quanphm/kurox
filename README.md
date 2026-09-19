@@ -1,29 +1,27 @@
-# Chrome Extensions samples
+# Jev Twitter Ads Blocker
 
-Official samples for Chrome Extensions and the Chrome Apps platform. (Chrome Apps are deprecated. Learn more [on the Chromium blog](https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html)).
+A Chrome MV3 extension that hides promoted posts on X/Twitter. Explicitly labeled ads (`Ad`, `Promoted`, `Sponsored`) are hidden in code; ambiguous posts are judged by TypeSafe's Jev model (`noul: is this a paid ad?`) and hidden or blurred by threshold.
 
-For more information on extensions, see [Chrome Developers](https://developer.chrome.com).
+## Layout
 
-## Explore samples
+- `manifest.json` — MV3 manifest (root = extension dir, load unpacked directly).
+- `src/content.js` — timeline observer, deterministic Ad-label fast path, hide/blur.
+- `src/background.js` — batched Jev classification via `POST https://api.typesafe.ai/v1/systemone`, verdict cache, thresholds.
+- `src/popup.html`, `src/popup.js` — enable toggle + hidden count.
+- `src/options.html`, `src/options.js` — API key + threshold settings.
 
-The directory structure is as follows:
+## Commands
 
-- [api-samples/](api-samples/) - extensions focused on a single API package
-- [functional-samples/](functional-samples/) - full featured extensions spanning multiple API packages
-- [\_archive/apps/](_archive/apps/) - deprecated Chrome Apps platform (not listed below)
-- [\_archive/mv2/](_archive/mv2/) - resources for manifest version 2
+```sh
+bun install
+bun run lint         # oxlint
+bun run lint:fix      # oxlint --fix
+bun run format        # oxfmt --write
+bun run format:check  # oxfmt --check
+```
 
-You can also use the [Samples](https://developer.chrome.com/docs/extensions/samples/) page to discover extensions by type, permissions, and extension API.
+Verify by loading the repo root as an unpacked extension and scrolling the X timeline.
 
-## Installation
+## Setup
 
-To experiment with these samples, please clone this repo and use 'Load Unpacked Extension'.
-Read more on [Development Basics](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked).
-
-## Contributing
-
-Please see [the CONTRIBUTING file](/CONTRIBUTING.md) for information on contributing to the `chrome-extensions-samples` project.
-
-## License
-
-`chrome-extensions-samples` are authored by Google and are licensed under the [Apache License, Version 2.0](/LICENSE).
+Set your TypeSafe API key in the extension's Settings (Options page). Without a key, only explicitly labeled ads are hidden.

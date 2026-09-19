@@ -1,0 +1,16 @@
+[
+  {
+    "id": "cheaper-inference-ad",
+    "expected": "hide",
+    "note": "Explicit Ad badge + discount pitch + external link card",
+    "author": "@fabrice_mayrand",
+    "text": "This is the cheapest AI provider\n\nEvery model is discounted up to 81%!\n\nZDR is available\n\nTry it -> CheaperInference.com\n\nCheaper Inference\n64 AI models. Up to 81% off.\nStart saving ->\nZERO DATA RETENTION\ncheaperinference.com\nFrom cheaperinference.com"
+  },
+  {
+    "id": "g123-game-ad",
+    "expected": "hide",
+    "note": "Explicit Ad badge (Japanese), game promo + link card",
+    "author": "@highscho...",
+    "text": "あなたが知らない新たなゲーム\n\nちょっとだけ遊んでみる?\n\n忖度なし ハイスクール DxD Opiプレイ感想\n良い点\n・ゲームオリジナル描き下ろしイラスト多数\n・ブラウザゲームなので会員登録・DL不要\n・無料ガチャでも十分SSRを獲得できる\n悪い点\n・周回プレイが多く、作業感が出ることも\nDL不要、基本プレイ無料\nFrom g123.jp"
+  }
+]

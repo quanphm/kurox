@@ -1,0 +1,3 @@
+{
+  "ignorePatterns": ["dist/", "**/third-party/**", ".agents/", "bun.lock"]
+}

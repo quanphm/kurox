@@ -1,0 +1,22 @@
+{
+  "name": "Jev Twitter Ads Blocker",
+  "description": "Hide promoted posts on X/Twitter using TypeSafe Jev.",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.typesafe.ai/*"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["src/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup.html"
+  },
+  "options_page": "src/options.html"
+}

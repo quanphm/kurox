@@ -1,43 +1,20 @@
 {
-  "name": "chrome-extensions-samples",
-  "version": "1.0.0",
+  "name": "jev-twitter",
+  "version": "0.1.0",
   "private": true,
-  "description": "Official samples for Chrome Extensions and the Chrome Apps platform.",
+  "description": "Twitter/X ads blocker powered by TypeSafe Jev.",
+  "type": "module",
   "scripts": {
-    "prettier": "npx prettier **/*.{md,html,json} -w",
-    "lint": "eslint **/*.js",
-    "lint:fix": "npm run lint -- --fix",
-    "prepare": "husky install"
+    "lint": "bunx oxlint .",
+    "lint:fix": "bunx oxlint . --fix",
+    "format": "bunx oxfmt --write .",
+    "format:check": "bunx oxfmt --check .",
+    "prepare": "husky"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GoogleChrome/chrome-extensions-samples.git"
-  },
-  "keywords": [],
-  "author": "The Chrome Team",
-  "license": "Apache 2.0",
-  "bugs": {
-    "url": "https://github.com/GoogleChrome/chrome-extensions-samples/issues"
-  },
-  "homepage": "https://github.com/GoogleChrome/chrome-extensions-samples#readme",
   "devDependencies": {
-    "@eslint/js": "10.0.1",
-    "chrome-types": "0.1.443",
-    "eslint": "^10.10.0",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-jest": "^29.16.6",
-    "eslint-plugin-prettier": "5.5.6",
-    "globals": "17.12.0",
     "husky": "9.1.7",
-    "lint-staged": "17.5.0",
-    "prettier": "3.9.6"
+    "oxfmt": "0.68.0",
+    "oxlint": "1.83.0"
   },
-  "lint-staged": {
-    "**/*.js": [
-      "npx eslint --fix"
-    ],
-    "**/*.{md,html,json}": [
-      "npx prettier --write"
-    ]
-  }
+  "packageManager": "bun@1.4.2"
 }
