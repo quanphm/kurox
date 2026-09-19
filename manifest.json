@@ -1,16 +1,22 @@
 {
-  "name": "Jev Twitter Ads Blocker",
-  "description": "Hide promoted posts on X/Twitter using TypeSafe Jev.",
+  "name": "Kurox",
+  "description": "Hide promoted posts on X/Twitter and Reddit.",
   "version": "0.1.0",
   "manifest_version": 3,
   "permissions": ["storage"],
   "host_permissions": ["https://api.typesafe.ai/*"],
   "background": {
-    "service_worker": "src/background.js"
+    "service_worker": "src/background.js",
+    "type": "module"
   },
   "content_scripts": [
     {
-      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "matches": [
+        "https://x.com/*",
+        "https://twitter.com/*",
+        "https://www.reddit.com/*",
+        "https://old.reddit.com/*"
+      ],
       "js": ["src/content.js"],
       "run_at": "document_idle"
     }

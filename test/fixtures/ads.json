@@ -12,5 +12,19 @@
     "note": "Explicit Ad badge (Japanese), game promo + link card",
     "author": "@highscho...",
     "text": "あなたが知らない新たなゲーム\n\nちょっとだけ遊んでみる?\n\n忖度なし ハイスクール DxD Opiプレイ感想\n良い点\n・ゲームオリジナル描き下ろしイラスト多数\n・ブラウザゲームなので会員登録・DL不要\n・無料ガチャでも十分SSRを獲得できる\n悪い点\n・周回プレイが多く、作業感が出ることも\nDL不要、基本プレイ無料\nFrom g123.jp"
+  },
+  {
+    "id": "klaviyo-reddit-ad",
+    "expected": "hide",
+    "note": "Reddit '· Ad' header suffix + CTA button + domain attribution",
+    "author": "Official_Klaviyo",
+    "text": "Official_Klaviyo · Ad\nIntroducing your brand's best friend. An autonomous CRM, a customer whisperer, and a personality hire all in one. That's Klaviyo.\nLearn More\nklaviyo.com\n[Post contains a call-to-action button]"
+  },
+  {
+    "id": "livid-reddit-ad",
+    "expected": "hide",
+    "note": "Reddit '· Ad' header suffix styled as organic grievance post + CTA",
+    "author": "u/Glarpenheimer",
+    "text": "u/Glarpenheimer · Ad\nWe got screwed by Vimeo's new owners in 2024, now we've built the Vimeo alternative they're terrified of.\nLearn More\nlivid.com\n[Post contains a call-to-action button]"
   }
 ]

@@ -1,14 +1,15 @@
 {
-  "name": "jev-twitter",
+  "name": "kurox",
   "version": "0.1.0",
   "private": true,
-  "description": "Twitter/X ads blocker powered by TypeSafe Jev.",
+  "description": "Kurox Twitter/X ads blocker.",
   "type": "module",
   "scripts": {
     "lint": "bunx oxlint .",
     "lint:fix": "bunx oxlint . --fix",
     "format": "bunx oxfmt --write .",
     "format:check": "bunx oxfmt --check .",
+    "test": "bun test",
     "prepare": "husky"
   },
   "devDependencies": {
