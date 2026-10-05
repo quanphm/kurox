@@ -1,24 +1,65 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <style>
-      body {
-        width: 220px;
-        padding: 12px;
-        font-family: system-ui, sans-serif;
-      }
-      label {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-      }
-    </style>
+    <title>Kurox</title>
+    <link rel="stylesheet" href="ui.css" />
+    <link rel="stylesheet" href="popup.css" />
   </head>
-  <body>
-    <label><input type="checkbox" id="enabled" /> Enabled</label>
-    <p>Ads hidden: <span id="count">0</span></p>
-    <p><a href="options.html" target="_blank">Settings</a></p>
+  <body class="popup">
+    <header class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 3l18 18" />
+          <path d="M10.6 10.7a2 2 0 0 0 2.7 2.7" />
+          <path d="M9.4 5.3A9.5 9.5 0 0 1 12 5c5 0 9 4.5 9 7 0 .8-.5 1.9-1.4 3" />
+          <path d="M6.2 6.7C4.1 8.1 3 10.2 3 12c0 2.5 4 7 9 7 1.5 0 2.9-.4 4.1-1.1" />
+        </svg>
+      </span>
+      <div class="brand-text">
+        <h1>Kurox</h1>
+        <p>Ad blocker for X &amp; Reddit</p>
+      </div>
+    </header>
+
+    <div class="switch-row card">
+      <label class="label" for="enabled">Blocking enabled</label>
+      <span class="switch">
+        <input type="checkbox" id="enabled" role="switch" />
+        <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+      </span>
+    </div>
+
+    <div class="card stat">
+      <span class="stat-value" id="count">0</span>
+      <span class="stat-label">Ads hidden</span>
+    </div>
+
+    <a class="button settings-link" href="options.html" target="_blank">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="3" />
+        <path
+          d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2v.2a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-3-1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0-1.2-2.9H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.2-3l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 2.9-1.2V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 3 1.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0 1.2 2.9h.2a2 2 0 1 1 0 4H21a1.7 1.7 0 0 0-1.6 1z"
+        />
+      </svg>
+      Settings
+    </a>
+
     <script src="popup.js"></script>
   </body>
 </html>

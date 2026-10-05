@@ -1,0 +1,73 @@
+.options {
+  padding: 32px 20px 48px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.wrap .brand {
+  margin-bottom: 22px;
+}
+
+.wrap .brand-text h1 {
+  font-size: 17px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.card {
+  padding: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.card h2 {
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.card .hint {
+  margin-bottom: 12px;
+}
+
+.slider + .slider {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.hint.warn {
+  margin: 14px 0 0;
+  padding: 8px 10px;
+  color: var(--text);
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.status {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.status.visible {
+  opacity: 1;
+}

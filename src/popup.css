@@ -1,0 +1,44 @@
+.popup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 260px;
+  padding: 14px;
+}
+
+.popup .card {
+  padding: 11px 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 16px 12px !important;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 30px;
+  font-weight: 650;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.stat-label {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.settings-link {
+  width: 100%;
+}
+
+.settings-link svg {
+  color: var(--text-muted);
+}
