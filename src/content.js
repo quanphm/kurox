@@ -16,7 +16,7 @@ const SITES = {
   },
   reddit: {
     postSelector:
-      'shreddit-post, shreddit-comments-page-ad, div[data-testid="post-container"], div.thing[data-type="link"]',
+      'shreddit-post, shreddit-ad-post, shreddit-comments-page-ad, shreddit-comment-tree-ad, div[data-testid="post-container"], div.thing[data-type="link"]',
     bodySelector:
       '[data-click-id="text"], div[data-testid="post-content"], .usertext-body, [slot="text-body"]',
     authorSelector: 'a[href*="/user/"], a[href*="/r/"]',
@@ -29,7 +29,7 @@ const isPromotedContainer = (post) =>
   // Mirrors isPromotedRoot in src/labels.js — keep in sync.
   // is-ad="" excluded: present-but-empty on organic overflow menus.
   post.matches(
-    "shreddit-comments-page-ad, [ad-type], [campaign-id], [ad-events], [ads-correlation-id], [data-promoted], .promoted, .promotedlink, li.promotedlink",
+    "shreddit-ad-post, shreddit-comments-page-ad, shreddit-comment-tree-ad, [ad-type], [campaign-id], [ad-events], [ads-correlation-id], [data-promoted], .promoted, .promotedlink, li.promotedlink",
   );
 
 // TreeWalker and querySelectorAll stop at shadow boundaries, but Reddit
@@ -106,7 +106,15 @@ const extractPost = (post) => {
 };
 
 const hide = (post) => {
-  post.style.display = "none";
+  // Reddit wraps feed items in an <article>; hiding the inner custom element
+  // alone leaves an empty gap, so collapse the whole feed item when we know
+  // the root is a dedicated ad tag. Falls back to the element itself.
+  const target = post.matches(
+    "shreddit-ad-post, shreddit-comments-page-ad, shreddit-comment-tree-ad",
+  )
+    ? (post.closest("article") ?? post)
+    : post;
+  target.style.display = "none";
 };
 
 const blur = (post) => {
@@ -133,17 +141,22 @@ const processPost = async (post) => {
 
   if (hasExplicitAdLabel(post)) {
     hide(post);
-    chrome.runtime.sendMessage({ type: "AD_COUNTED" });
+    // Fire-and-forget: swallow the rejection if the worker is gone.
+    chrome.runtime.sendMessage({ type: "AD_COUNTED" }).catch(() => {});
     return;
   }
 
   const { text, author } = extractPost(post);
   if (!text.trim()) return;
 
-  const response = await chrome.runtime.sendMessage({
-    type: "CLASSIFY",
-    post: { text, author },
-  });
+  // The worker answers async from a debounce queue; if it is recycled
+  // before responding the channel closes — treat as "leave", not a crash.
+  const response = await chrome.runtime
+    .sendMessage({
+      type: "CLASSIFY",
+      post: { text, author },
+    })
+    .catch(() => null);
   if (!response) return;
   if (response.verdict === "hide") hide(post);
   else if (response.verdict === "blur") blur(post);

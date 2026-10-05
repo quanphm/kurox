@@ -34,9 +34,16 @@ export const hasAdAttributes = ({
 
 // Promotion markers on a post root element (e.g. Reddit's
 // <shreddit-comments-page-ad class="promotedlink" ad-type campaign-id ...>).
+// Reddit also renders feed ads as a dedicated <shreddit-ad-post> element
+// (no nested <shreddit-post>, so nothing else selects it) and comment-tree
+// ads as <shreddit-comment-tree-ad>.
 // Mirrored by the matches() selector in isPromotedContainer — keep in sync.
 // NOTE: is-ad="" is deliberately excluded; it appears empty on organic menus.
-const PROMOTED_ROOT_TAGS = ["SHREDDIT-COMMENTS-PAGE-AD"];
+const PROMOTED_ROOT_TAGS = [
+  "SHREDDIT-AD-POST",
+  "SHREDDIT-COMMENTS-PAGE-AD",
+  "SHREDDIT-COMMENT-TREE-AD",
+];
 const PROMOTED_ROOT_CLASSES = ["promotedlink", "promoted"];
 const PROMOTED_ROOT_ATTRS = [
   "ad-type",

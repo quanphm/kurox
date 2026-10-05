@@ -78,6 +78,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     chrome.storage.sync.get({ hiddenCount: 0 }).then(({ hiddenCount }) => {
       chrome.storage.sync.set({ hiddenCount: hiddenCount + 1 });
     });
+    sendResponse({ ok: true });
     return false;
   }
   if (message.type !== "CLASSIFY") return false;

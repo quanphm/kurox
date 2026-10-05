@@ -69,6 +69,18 @@ describe("isPromotedRoot", () => {
     ).toBe(true);
   });
 
+  test("Reddit feed ad root matches", () => {
+    expect(
+      isPromotedRoot({
+        tagName: "shreddit-ad-post",
+        classNames: ["relative", "block"],
+        attrNames: ["id", "post-id", "ad-type", "campaign-id"],
+      }),
+    ).toBe(true);
+    expect(isPromotedRoot({ tagName: "SHREDDIT-AD-POST" })).toBe(true);
+    expect(isPromotedRoot({ tagName: "SHREDDIT-COMMENT-TREE-AD" })).toBe(true);
+  });
+
   test("each marker matches on its own", () => {
     expect(isPromotedRoot({ tagName: "SHREDDIT-COMMENTS-PAGE-AD" })).toBe(true);
     expect(isPromotedRoot({ classNames: ["promotedlink"] })).toBe(true);

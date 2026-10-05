@@ -6,7 +6,7 @@ MV3 Chrome extension at repo root (manifest.json). Bun + oxlint + oxfmt. No bund
 
 - `manifest.json` — extension manifest; load repo root as unpacked extension.
 - `src/content.js` — per-site adapters (X articles / Reddit `shreddit-post` etc.) via MutationObserver; explicit `Ad`/`Promoted`/`Sponsored` leaves, Reddit `· Ad` header suffixes, and ad-tracker attributes (`rel*=sponsored`, `data-ad-click-*`, `aria-label^=Advertisement:`, `alb.reddit.com` href) hidden without API calls. The element walk recurses into open shadow roots (Reddit renders its ad link inside one); CTA presence appended to Jev state as a hint.
-- `src/labels.js` — pure ad/CTA matchers (testable); patterns duplicated in `content.js` because MV3 content scripts cannot import modules. Keep both in sync. Trusts `shreddit-comments-page-ad` / `ad-type` / `campaign-id` / `ad-events` / `is-promoted`; deliberately distrusts `is-ad` (present-but-empty on organic menus).
+- `src/labels.js` — pure ad/CTA matchers (testable); patterns duplicated in `content.js` because MV3 content scripts cannot import modules. Keep both in sync. Trusts `shreddit-ad-post` (feed ads) / `shreddit-comments-page-ad` / `shreddit-comment-tree-ad` / `ad-type` / `campaign-id` / `ad-events` / `is-promoted`; deliberately distrusts `is-ad` (present-but-empty on organic menus).
 - `src/background.js` — batches posts (10/call, 300ms debounce) to `POST https://api.typesafe.ai/v1/systemone` (model `jev-latest`, one Noul `is_ad` per post); caches verdicts by text hash.
 - `src/popup.*` — enable toggle + hidden counter. `src/options.*` — API key + thresholds.
 - `.agents/skills/chrome-extensions/` — MV3 best practices; follow when writing extension code.
